@@ -1,1 +1,30 @@
+Question: Collatz Conjecture - Start with a number n > 1. Find the number of steps it takes to reach one using the following process: 
+If n is even, divide it by 2. If n is odd, multiply it by 3 and add 1.
+Solution 1:
+def number_step_n(n):
+    i = 0
+    while n>1:
+        if n%2==0:
+            n=n/2
+            i+=1
+        else:
+            n=n*3+1
+            i+=1
+    return i
+Solution 2:
+def collatzRecur(curNum, count=0):
+    '''This recursively solves the Collatz Conjecture'''
+    if curNum<=1:#Base case
+        return count
+    if curNum%2==0:
+        return collatzRecur(curNum/2, count+1)
+    else:
+        return collatzRecur(curNum*3+1, count+1)
+#Some tests
+print collatzRecur(2) #1
+print collatzRecur(3) #7
+print collatzRecur(4) #2
+print collatzRecur(5) #5
+print collatzRecur(6) #8
 
+ 
