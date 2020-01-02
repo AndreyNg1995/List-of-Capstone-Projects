@@ -154,5 +154,33 @@ def main():
     
 if __name__ == '__main__':
     sys.exit(main())
+---------------------------------------------------------------------------------------------------------------------------------------------
+Question:Sieve of Eratosthenes - The sieve of Eratosthenes is one of the most efficient ways to find all of
+the smaller primes (below 10 million or so).
+Solution:
+def sieve(n):
+    is_prime = [False] * 2 + [True] * (n - 1) 
+    for i in range(int(n**0.5 + 1.5)): # stop at ``sqrt(n)``
+        if is_prime[i]:
+            for j in range(i*i, n+1, i):
+                is_prime[j] = False
+    return [i for i, prime in enumerate(is_prime) if prime]
+
+def main():
+    try:
+        n = int(input('Enter a number: '))
+        print(sieve(n))
+    except ValueError:
+        print('Enter only an integer value, n > 1.')
+        main()
+        
+if __name__ == '__main__':
+    #Về ý nghĩa của nó thì nó giống như các C và 
+    #các ngôn ngữ khác bắt đầu một chương trình. Ta cần có một điểm để bắt đầu.
+    #Thì khi ta viết if __name__ == '__main__': thì 
+    #Python sẽ thực thi phần lệnh phía sau của lệnh if nếu file này được thực 
+    #thi bằng lệnh python.
+    #Đây là một phong cách lập trình của Python mà ta nên sử dụng.
+    main()
     
 
